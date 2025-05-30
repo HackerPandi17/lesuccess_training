@@ -1,0 +1,86 @@
+1.count the digit
+
+import java.util.Scanner;
+public class Ctd
+{
+static int count(int n) {
+        if (n<10)
+        {
+        return 1;
+        }
+        return 1+count(n/10);
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(count(n));
+    }
+}
+################################################################################################################
+2.duplicate in strings
+
+import java.util.*;
+public class Duplicate{
+  public static void main(String[] a){
+    String s=new Scanner(System.in);
+    String r="";
+    for(int i=0;i<s.length();i++){
+      char c=s.charAt(i);
+      int x=0;
+      for(int j=0;j<r.length();j++){
+        if(r.charAt(j)==c){
+          x=1;
+          break;
+        }
+      }
+      if(x==0)
+      {
+      r+=c;
+    }
+    }
+    System.out.println(r);
+  }
+}
+############################################################################################################
+3.palindrome using recursion
+
+import java.util.Scanner;
+public class Palindrome {
+    static boolean palind(String s,int i) {
+        if (i>=s.length()/2) {
+            return true;
+        }
+        if(s.charAt(i)!=s.charAt(s.length()-1-i)) 
+        {
+            return false;
+        }
+        return palind(s,i+1);
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        if (palind(s,0)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+#############################################################################################################
+4.power using recursion 
+
+import java.util.Scanner;
+public class Power{
+    static int power(int a,int b) {
+        if (b==0) {
+            return 1;
+        }
+        return a*power(a,b-1);    
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        System.out.println(power(a,b));
+    }
+}

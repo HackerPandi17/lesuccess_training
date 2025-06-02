@@ -1,0 +1,28 @@
+1. chocolate packing/2.example 2
+
+import java.util.Scanner;
+
+public class Pack {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int index = 0;
+        for (int i = 0; i < N; i++) {
+            if (arr[i] != 0) {
+                arr[index++] = arr[i];
+            }
+        }
+        while (index < N) {
+            arr[index++] = 0;
+        }
+        for (int i = 0; i < N; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+#################################################################################################################################
+

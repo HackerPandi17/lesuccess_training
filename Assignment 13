@@ -20,4 +20,29 @@
         System.out.println(removeDuplicates(input));  // Output: ca
     }
 }
-##############################################################################################################
+#################################################################################################
+2.paranthesis balance
+
+public class ParenthesesChecker {
+    public static String isBalanced(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') {
+                stack.push(ch);
+            } 
+              else if (ch == ')') {
+                if (stack.isEmpty()) {
+                    return "Not Balanced";
+                }
+              stack.pop();
+            }
+        }
+       return stack.isEmpty() ? "Balanced" : "Not Balanced";
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+       System.out.println(isBalanced(str));
+    }
+}
+####################################################################################################

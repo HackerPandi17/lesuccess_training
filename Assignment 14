@@ -1,0 +1,111 @@
+1.Queue using array
+
+class ArrayQueue {
+    int size = 100;
+    int[] queue = new int[size];
+    int front = -1, rear = -1;
+
+    void enqueue(int data) {
+        if (rear == size - 1) {
+            System.out.println("Queue Overflow");
+            return;
+        }
+        if (front == -1) front = 0;
+        queue[++rear] = data;
+    }
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+        System.out.println("Dequeued: " + queue[front++]);
+    }
+    void display() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        System.out.print("Queue: ");
+        for (int i = front; i <= rear; i++) {
+            System.out.print(queue[i] + " ");
+        }
+        System.out.println();
+    }
+}
+###########################################################################################################################
+2.Queue using linked list
+
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedListQueue {
+    Node front = null, rear = null;
+    void enqueue(int data) {
+        Node newNode = new Node(data);
+        if (rear == null) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+    }
+    void dequeue() {
+        if (front == null) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+        System.out.println("Dequeued: " + front.data);
+        front = front.next;
+        if (front == null) rear = null;
+    }
+    void display() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        System.out.print("Queue: ");
+        Node temp = front;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
+###########################################################################################################################
+3.Reverse first k elements of queue
+
+import java.util.*;
+public class ReverseKQueue {
+    public static void reverseFirstK(Queue<Integer> q, int k) {
+        if (q == null || k <= 0 || k > q.size()) return;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < k; i++) {
+            stack.push(q.remove());
+        }
+        while (!stack.isEmpty()) {
+            q.add(stack.pop());
+        }
+        int size = q.size();
+        for (int i = 0; i < size - k; i++) {
+            q.add(q.remove());
+        }
+    }
+    public static void main(String[] args) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(1); 
+        q.add(2); 
+        q.add(3); 
+        q.add(4); 
+        q.add(5);
+        int k = 3;
+        System.out.println("Original Queue: " + q);
+        reverseFirstK(q, k);
+        System.out.println("After reversing first " + k + " elements: " + q);
+    }
+}

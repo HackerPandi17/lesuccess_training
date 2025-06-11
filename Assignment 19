@@ -22,7 +22,7 @@ def isPrime(n) {
     }
     return true
 }
-println(isPrime(17))  // true
+println(isPrime(17))  
 #######################################################################################################
 4. Remove duplicates from a list
 
